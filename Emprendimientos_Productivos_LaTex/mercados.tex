@@ -1,0 +1,778 @@
+% ============================================================
+% MÓDULO: MERCADOS FINANCIEROS Y BURSÁTILES
+% ============================================================
+\clearpage
+\section*{MÓDULO: MERCADOS FINANCIEROS Y BURSÁTILES}
+\subsection*{Bolsas, operaciones, brokers, índices y bancos centrales}
+
+\begin{recuadro}
+\textbf{Objetivo del módulo:} entender qué son los mercados de capitales, cómo funcionan las
+bolsas argentinas y del mundo, cómo se opera desde un broker online, qué tipos de operaciones
+existen (acciones, bonos, obligaciones negociables, cauciones, dólar MEP, futuros, opciones
+\textit{call} y \textit{put}, venta en corto) y qué significan los indicadores que aparecen
+todos los días en las noticias (Merval, riesgo país, Dow Jones, Nasdaq, tasa de la Fed).
+
+\textbf{Importante:} este módulo es de \textbf{educación financiera}, no de recomendación de
+inversiones. Las empresas, plataformas y activos que se nombran son ejemplos. Toda inversión
+tiene riesgo y los resultados pasados no garantizan resultados futuros.
+\end{recuadro}
+
+% ============================================================
+\section*{1. ¿QUÉ ES EL MERCADO DE CAPITALES?}
+
+Es el ámbito donde se encuentran quienes \textbf{necesitan financiamiento} (empresas, gobiernos,
+provincias) y quienes \textbf{tienen ahorros} y buscan hacerlos rendir (personas, fondos,
+empresas, aseguradoras).
+
+\begin{itemize}
+  \item Una \textbf{empresa} que quiere crecer puede \textbf{emitir acciones} (vende una parte
+        de la empresa a nuevos socios) o \textbf{emitir deuda} (obligaciones negociables).
+  \item Un \textbf{gobierno} que necesita fondos \textbf{emite bonos o letras} (toma deuda).
+  \item El \textbf{ahorrista} compra esos títulos esperando una ganancia: dividendos, intereses
+        o la suba del precio.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\small, align=center}, caja/.style={draw=ppAzul,
+  very thick, rounded corners, minimum width=3.6cm, minimum height=1.2cm}]
+  \node[caja] (A) at (0,0) {\textbf{AHORRISTAS}\\ personas, fondos};
+  \node[caja] (M) at (5,0) {\textbf{MERCADO}\\ bolsa + brokers};
+  \node[caja] (E) at (10,0) {\textbf{EMISORES}\\ empresas, Estado};
+  \draw[->, thick] (A.north east) to[bend left=15] node[above]{\footnotesize dinero} (M.north west);
+  \draw[->, thick] (M.north east) to[bend left=15] node[above]{\footnotesize dinero} (E.north west);
+  \draw[->, thick] (E.south west) to[bend left=15] node[below]{\footnotesize títulos} (M.south east);
+  \draw[->, thick] (M.south west) to[bend left=15] node[below]{\footnotesize títulos} (A.south east);
+\end{tikzpicture}
+\end{center}
+
+\paragraph*{Mercado primario y secundario.}
+En el \textbf{primario} el título se vende por primera vez y el dinero va a quien lo emite
+(licitación de bonos del Tesoro, colocación de una obligación negociable, salida a bolsa de una
+empresa u \textbf{IPO}). En el \textbf{secundario} los inversores se compran y venden los
+títulos entre sí: eso es lo que ocurre todos los días en la bolsa, y es lo que le da
+\textbf{liquidez} al primario (nadie compraría un bono a 10 años si no pudiera venderlo antes).
+
+\paragraph*{Renta fija y renta variable.}
+\begin{itemize}
+  \item \textbf{Renta variable (acciones):} sos socio de la empresa. Ganás si sube el precio o
+        si reparte dividendos; podés perder si baja. Mayor riesgo y mayor potencial.
+  \item \textbf{Renta fija (bonos, obligaciones negociables, letras):} le prestás dinero a un
+        gobierno o empresa, que se compromete a devolverlo con intereses en fechas
+        determinadas. En general menor riesgo, aunque depende de quién emite: un bono de un
+        país que no paga puede perder la mayor parte de su valor.
+\end{itemize}
+
+\paragraph*{Riesgo y rendimiento.}
+Regla básica: \textbf{a mayor rendimiento esperado, mayor riesgo}. Nadie ofrece ganancias altas
+y seguras; si alguien lo hace, probablemente sea una estafa. Para reducir el riesgo se
+\textbf{diversifica}: no poner todos los huevos en la misma canasta.
+
+% ============================================================
+\section*{2. LOS MERCADOS ARGENTINOS}
+
+\subsubsection*{2.1. Los actores}
+\begin{center}
+\small
+\begin{tabular}{|p{0.27\linewidth}|p{0.63\linewidth}|}
+\hline
+\textbf{Actor} & \textbf{Función} \\ \hline
+\textbf{CNV} (Comisión Nacional de Valores) & Organismo del Estado que regula y controla el
+mercado de capitales: autoriza emisiones, agentes y fondos, y protege al inversor. \\ \hline
+\textbf{BYMA} (Bolsas y Mercados Argentinos) & Principal mercado de acciones, bonos, cauciones,
+opciones y CEDEARs del país. Calcula el índice S\&P Merval. \\ \hline
+\textbf{A3 Mercados} & Nace en 2025 de la fusión del MAE (Mercado Abierto Electrónico, renta
+fija y divisas) y Matba Rofex (futuros agropecuarios y financieros, con sede en Rosario). Es
+el principal mercado de futuros y opciones del país (dólar futuro, soja, maíz, trigo). \\ \hline
+\textbf{MAV} (Mercado Argentino de Valores) & Mercado con sede en Rosario, orientado a pymes
+(cheques de pago diferido, pagarés, obligaciones negociables pyme). \\ \hline
+\textbf{Bolsa de Comercio de Rosario (BCR)} & Institución centenaria vinculada al comercio de
+granos: su \textbf{Cámara Arbitral} fija los precios de referencia (``pizarra'') de la soja,
+el maíz y el trigo, que usa todo el agro argentino. \\ \hline
+\textbf{Caja de Valores} & Custodia los títulos y registra quién es el dueño de cada uno. \\
+\hline
+\textbf{ALyC y otros agentes} & Los \textbf{brokers} (antes ``sociedades de bolsa''): abren la
+cuenta del inversor y operan en su nombre. Deben estar inscriptos en la CNV. \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{2.2. Cómo funciona una rueda de negociación}
+\begin{itemize}
+  \item \textbf{La rueda:} es la jornada de negociación. En BYMA se opera de lunes a viernes
+        hábiles, aproximadamente entre las 10:30 y las 17:00 h (desde noviembre de 2026, las
+        acciones y CEDEARs a 24 h se pueden operar hasta las 18:00 h).
+  \item \textbf{Ticker o especie:} código abreviado de cada título. Ejemplos: \texttt{GGAL}
+        (Grupo Galicia), \texttt{YPFD} (YPF), \texttt{AL30} (bono Bonar 2030).
+  \item \textbf{Moneda:} muchos títulos cotizan en pesos y también en dólares. El sufijo
+        \textbf{D} indica dólar MEP (\texttt{AL30D}) y el sufijo \textbf{C} indica dólar cable
+        o CCL (\texttt{AL30C}).
+  \item \textbf{Plazos de liquidación:} cuándo se entregan efectivamente los títulos y el dinero.
+        \textbf{Contado inmediato (CI o T+0):} el mismo día. \textbf{24 horas (T+1):} el día hábil
+        siguiente; es el plazo estándar.
+  \item \textbf{Puntas:} la \textbf{punta compradora} es el mayor precio que alguien ofrece
+        pagar; la \textbf{punta vendedora}, el menor precio al que alguien acepta vender. La
+        diferencia se llama \textbf{spread}: cuanto más chico, más líquido es el título.
+  \item \textbf{Volumen:} cantidad de dinero o de títulos negociados. Un título con poco volumen
+        puede ser difícil de vender rápido sin bajar el precio.
+  \item \textbf{Paneles:} el \textbf{panel líder} reúne las acciones más negociadas; el
+        \textbf{panel general}, el resto. También hay paneles de bonos, CEDEARs y pymes.
+\end{itemize}
+
+\subsubsection*{2.3. El índice S\&P Merval}
+Un \textbf{índice bursátil} es un número que resume cómo se mueve un grupo de acciones. Es como
+un ``termómetro'' del mercado: si el índice sube, la mayoría de las acciones que lo componen
+subieron.
+
+El \textbf{S\&P Merval} reúne las acciones de empresas argentinas más negociadas en BYMA
+(bancos, energéticas, de servicios públicos, siderúrgicas, de telecomunicaciones). Como se
+expresa en pesos, en una economía con inflación sube mucho en números; por eso los analistas
+suelen mirarlo \textbf{en dólares} para saber si realmente ganó valor.
+
+\subsubsection*{2.4. El riesgo país}
+El \textbf{riesgo país} mide cuánto \textbf{más interés} le exigen los inversores a un país
+para prestarle, en comparación con el gobierno de Estados Unidos (considerado el deudor más
+seguro). Lo calcula el banco JP Morgan con su índice \textbf{EMBI} y se expresa en
+\textbf{puntos básicos} (100 puntos básicos = 1\%).
+
+\begin{recuadro}
+\textbf{Ejemplo:} si los bonos del Tesoro de EE.\,UU. rinden 4\% anual y el riesgo país es de
+850 puntos básicos, los bonos argentinos en dólares rinden aproximadamente
+4\% + 8,5\% = \textbf{12,5\% anual}. Cuanto más alto el riesgo país, más caro le resulta al
+Estado (y a las empresas y provincias) endeudarse, y más difícil es conseguir crédito
+internacional.
+
+\textbf{Dato:} a mediados de noviembre de 2026 el riesgo país argentino rondaba los 850 puntos
+básicos, después de haber tocado un mínimo de 402 puntos en julio. Consultar el valor del día.
+\end{recuadro}
+
+\subsubsection*{2.5. Los bonos argentinos}
+\begin{itemize}
+  \item \textbf{Bonares (AL) y Globales (GD):} bonos del Tesoro en dólares. Los Bonares se rigen
+        por ley argentina; los Globales, por ley de Nueva York (en caso de conflicto, se
+        litiga en tribunales de EE.\,UU.). Ejemplos: AL30, GD30, GD35, GD46 (el número indica
+        el año de vencimiento).
+  \item \textbf{Letras y bonos capitalizables en pesos (Lecap, Boncap):} deuda en pesos a tasa
+        fija, de corto plazo.
+  \item \textbf{Bonos ajustables por inflación (CER):} el capital se actualiza con la inflación.
+  \item \textbf{Bonos \textit{dollar linked}:} en pesos, pero ajustados por el tipo de cambio
+        oficial; sirven para cubrirse de una devaluación.
+  \item \textbf{Bonos del BCRA (BOPREAL)} y \textbf{bonos provinciales} (Provincia de Buenos
+        Aires, Córdoba, Neuquén, etc.).
+\end{itemize}
+
+\paragraph*{Cómo se lee un bono.}
+\begin{itemize}
+  \item \textbf{Valor nominal (VN):} el monto sobre el que se calculan intereses y amortización.
+        Los precios suelen expresarse cada 100 de valor nominal.
+  \item \textbf{Cupón:} el interés que paga, en fechas fijas (por ejemplo, cada seis meses).
+  \item \textbf{Amortización:} la devolución del capital, en una o varias cuotas.
+  \item \textbf{Vencimiento:} fecha del último pago.
+  \item \textbf{Paridad:} precio dividido valor técnico; una paridad de 70\% significa que el
+        mercado paga 70 por algo que, si se cumple, vale 100.
+  \item \textbf{TIR:} lo que rinde por año si se compra hoy y se mantiene hasta el vencimiento.
+        \textbf{Cuando el precio del bono baja, su TIR sube}, y viceversa.
+\end{itemize}
+
+\subsubsection*{2.6. Las obligaciones negociables (ON)}
+Son \textbf{bonos emitidos por empresas}. Con ellas las compañías financian inversiones
+(perforar pozos, comprar equipos, construir plantas) sin pedir préstamos al banco. Hay ON de
+grandes empresas (YPF, Pampa Energía, Telecom, Tecpetrol) y ON pyme.
+\begin{itemize}
+  \item Se compran en la \textbf{licitación primaria} (el broker muestra las ofertas abiertas y
+        se ofertan montos y tasas) o después en el mercado secundario.
+  \item Muchas están en \textbf{dólares} y pagan intereses periódicos; suelen tener montos
+        mínimos de compra.
+  \item El riesgo depende de la empresa: hay que mirar su \textbf{calificación} (rating) y su
+        situación financiera.
+\end{itemize}
+
+% ============================================================
+\section*{3. BROKERS: CÓMO SE INVIERTE ONLINE EN ARGENTINA}
+
+\subsubsection*{3.1. Los agentes registrados en la CNV}
+\begin{center}
+\small
+\begin{tabular}{|p{0.30\linewidth}|p{0.60\linewidth}|}
+\hline
+\textbf{Tipo de agente} & \textbf{Qué hace} \\ \hline
+\textbf{ALyC} (Agente de Liquidación y Compensación) & Opera en los mercados, recibe el dinero
+y los títulos de los clientes y liquida las operaciones. Es el ``broker'' propiamente dicho. \\
+\hline
+\textbf{AN} (Agente de Negociación) & Opera en el mercado pero liquida a través de un ALyC. \\
+\hline
+\textbf{AAGI} (Agente Asesor Global de Inversión) & Asesora y administra carteras de clientes. \\
+\hline
+\textbf{AP} (Agente Productor) & Consigue clientes y los deriva a un ALyC (comercializador). \\
+\hline
+\textbf{Sociedades Gerentes de FCI} & Administran fondos comunes de inversión. \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{3.2. Dónde se puede invertir}
+\begin{itemize}
+  \item \textbf{Bancos:} desde el homebanking, con la \textbf{cuenta títulos} asociada a la caja
+        de ahorro. Cómodo, pero suelen tener menos instrumentos y comisiones más altas.
+  \item \textbf{Brokers online (ALyC):} plataformas web y aplicaciones como Bull Market Brokers,
+        InvertirOnline (IOL), Balanz, Cocos Capital, Portfolio Personal Inversiones (PPI) o
+        Allaria, entre muchas otras. Ofrecen todo el mercado (acciones, bonos, ON, CEDEARs,
+        cauciones, opciones, FCI), información, gráficos y capacitación.
+  \item \textbf{Billeteras virtuales:} muchas permiten invertir en FCI money market, comprar
+        dólar MEP o algunos instrumentos, a través de un ALyC asociado.
+\end{itemize}
+\textbf{Antes de elegir}, verificar en el sitio de la CNV que el agente esté registrado y
+comparar \textbf{comisiones}, \textbf{costos de mantenimiento}, instrumentos disponibles,
+atención al cliente y facilidad de la plataforma.
+
+\subsubsection*{3.3. Paso a paso para empezar}
+\begin{enumerate}
+  \item \textbf{Abrir la cuenta comitente} online con DNI, CUIL, datos personales y
+        laborales, y una selfie de validación. Es gratuita en la mayoría de los brokers.
+  \item \textbf{Completar el test de perfil de inversor:} \textit{conservador} (prioriza no
+        perder), \textit{moderado} o \textit{agresivo} (acepta más riesgo buscando más
+        ganancia). El broker solo puede ofrecer productos acordes al perfil.
+  \item \textbf{Vincular una cuenta bancaria propia} en pesos y en dólares. El dinero
+        \textbf{solo puede entrar y salir desde cuentas a tu nombre}.
+  \item \textbf{Transferir fondos} desde el banco o billetera a la cuenta del broker.
+  \item \textbf{Operar:} buscar el ticker, elegir compra o venta, moneda, plazo, cantidad y
+        tipo de orden; revisar el costo total y confirmar.
+  \item \textbf{Controlar la tenencia} (valuación de la cartera) y los movimientos; descargar
+        los comprobantes (boletos).
+  \item \textbf{Retirar:} vender y transferir el dinero de vuelta al banco.
+\end{enumerate}
+
+\paragraph*{Los costos de operar.}
+Cada operación tiene una \textbf{comisión del broker} (un porcentaje del monto), los
+\textbf{derechos de mercado} que cobra la bolsa y el \textbf{IVA} sobre esos conceptos. En
+operaciones chicas los costos pesan mucho: comprar y vender varias veces por semana con poco
+dinero puede hacer perder plata aunque los precios suban.
+
+% ============================================================
+\section*{4. TIPOS DE ÓRDENES Y DE OPERACIONES}
+
+\subsubsection*{4.1. Tipos de órdenes}
+\begin{center}
+\small
+\begin{tabular}{|p{0.24\linewidth}|p{0.66\linewidth}|}
+\hline
+\textbf{Orden} & \textbf{Cómo funciona} \\ \hline
+\textbf{A mercado} & Se ejecuta enseguida al mejor precio disponible. Rápida, pero el precio
+final puede ser algo distinto al esperado. \\ \hline
+\textbf{Límite} & Se fija el precio máximo de compra o mínimo de venta. Solo se ejecuta si el
+mercado llega a ese precio. \\ \hline
+\textbf{\textit{Stop loss}} & Orden de venta automática si el precio cae a un nivel fijado, para
+limitar pérdidas. \\ \hline
+\textbf{\textit{Take profit}} & Orden de venta automática si el precio sube a un nivel fijado,
+para asegurar ganancias. \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{4.2. Compra y venta de acciones}
+Se compra una acción esperando que suba o que pague \textbf{dividendos} (parte de las ganancias
+que la empresa reparte entre sus accionistas, en efectivo o en nuevas acciones). Otros eventos
+de una acción:
+\begin{itemize}
+  \item \textbf{Suscripción o ampliación de capital:} la empresa emite nuevas acciones y los
+        accionistas tienen preferencia para comprarlas.
+  \item \textbf{Split (desdoblamiento):} la acción se divide (por ejemplo, 1 acción de \$10.000
+        pasa a ser 10 de \$1.000). No cambia el valor total, solo la hace más ``barata'' por
+        unidad.
+  \item \textbf{Asamblea:} los accionistas votan las decisiones importantes de la empresa.
+\end{itemize}
+
+\subsubsection*{4.3. Compra y venta de bonos}
+Se puede comprar un bono para \textbf{cobrar sus cupones y amortizaciones hasta el vencimiento}
+(se gana la TIR del momento de compra) o para \textbf{venderlo antes} si su precio sube (por
+ejemplo, si baja el riesgo país). También se puede participar de las \textbf{licitaciones del
+Tesoro}, donde el Estado coloca letras y bonos nuevos.
+
+\subsubsection*{4.4. Caución bursátil y pases}
+La \textbf{caución} es un \textbf{préstamo de dinero de muy corto plazo} (de 1 a 120 días)
+entre inversores, garantizado con títulos y con la bolsa como garante.
+\begin{itemize}
+  \item \textbf{Caución colocadora:} prestás tus pesos (o dólares) a una tasa fija por unos días.
+        Es una alternativa al plazo fijo, de bajo riesgo.
+  \item \textbf{Caución tomadora:} pedís dinero prestado dejando tus títulos en garantía.
+\end{itemize}
+\textit{Ejemplo:} colocar \$1.000.000 a 7 días a una TNA del 30\% genera
+$1.000.000 \times 0{,}30 \times 7/365 \approx$ \textbf{\$5.753} de interés (antes de costos).
+
+El \textbf{pase} es una operación similar: se vende un título hoy y se pacta recomprarlo en una
+fecha futura a un precio mayor (es usada por bancos y por el BCRA para manejar la liquidez).
+
+\subsubsection*{4.5. Cheques de pago diferido y pagarés}
+Una pyme que recibió un cheque a 90 días puede \textbf{venderlo en el mercado} (MAV, BYMA) y
+cobrar hoy, con un descuento. Para el inversor que lo compra es una colocación de corto plazo
+con una tasa mayor, avalada muchas veces por una SGR. Es una de las principales formas de
+financiamiento de las pymes en el mercado de capitales.
+
+\subsubsection*{4.6. Dólar MEP y dólar cable (CCL)}
+El \textbf{dólar MEP} (o dólar bolsa) se obtiene \textbf{comprando un bono en pesos y
+vendiéndolo en dólares}. El cociente entre ambos precios es el tipo de cambio.
+
+\begin{recuadro}
+\textbf{Ejemplo:} se compran 100 nominales de \texttt{AL30} en pesos a \$95.000 y se venden los
+mismos 100 nominales como \texttt{AL30D} a USD 62.
+
+Dólar MEP $= \dfrac{95.000}{62} \approx$ \textbf{\$1.532 por dólar}.
+
+Los dólares quedan en la cuenta del broker y se transfieren a la caja de ahorro en dólares
+propia. Hoy las personas humanas pueden hacerlo sin plazo de espera (\textit{parking}); las
+personas jurídicas deben esperar un día hábil.
+\end{recuadro}
+
+El \textbf{dólar contado con liquidación (CCL o cable)} es igual, pero los dólares se reciben
+en una cuenta \textbf{en el exterior}: se vende el bono como \texttt{AL30C}. Se usa, por
+ejemplo, para comprar acciones en Wall Street o para que empresas giren dinero afuera.
+
+\subsubsection*{4.7. Derivados: futuros}
+Un \textbf{contrato de futuro} es un acuerdo para comprar o vender algo (dólar, soja, un índice)
+\textbf{en una fecha futura a un precio fijado hoy}. Se negocian en A3 Mercados.
+\begin{itemize}
+  \item \textbf{Comprador del futuro (posición larga):} gana si el precio sube.
+  \item \textbf{Vendedor del futuro (posición corta):} gana si el precio baja.
+  \item No se paga el total al comienzo: se deposita una \textbf{garantía} (margen) y cada día
+        se acreditan o debitan las diferencias (\textbf{ajuste diario}). Al vencimiento se
+        liquida por diferencia en pesos.
+\end{itemize}
+
+\begin{recuadro}
+\textbf{Ejemplo: dólar futuro.} Un taller que debe pagar en un mes una importación de USD 1.000
+teme una devaluación. Compra un contrato de dólar futuro (USD 1.000) a fin de mes a
+\textbf{\$1.600}.
+\begin{itemize}[leftmargin=*,nosep]
+  \item Si al vencimiento el dólar oficial está a \$1.650, el contrato le paga
+        $(1.650 - 1.600) \times 1.000 =$ \textbf{\$50.000}, que compensan la suba del dólar.
+  \item Si el dólar baja a \$1.550, pierde \$50.000 en el contrato, pero compra los dólares más
+        baratos.
+\end{itemize}
+En los dos casos el taller ``fijó'' su dólar en \$1.600: eso es una \textbf{cobertura}. Un
+productor de soja hace lo mismo para asegurar el precio de su cosecha antes de levantarla.
+\end{recuadro}
+
+\subsubsection*{4.8. Derivados: opciones \textit{call} y \textit{put}}
+Una \textbf{opción} da el \textbf{derecho, pero no la obligación}, de comprar o vender una
+acción a un precio fijado (\textbf{precio de ejercicio} o \textit{strike}) hasta una fecha de
+vencimiento. Por ese derecho se paga una \textbf{prima}. En BYMA se operan sobre todo opciones
+de Grupo Galicia (GGAL) y de algunas otras acciones líderes, en lotes de 100 acciones.
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.15\linewidth}|p{0.36\linewidth}|p{0.36\linewidth}|}
+\hline
+ & \textbf{CALL (opción de compra)} & \textbf{PUT (opción de venta)} \\ \hline
+\textbf{Comprador} & Paga la prima. Tiene derecho a \textbf{comprar} al strike. Gana si la
+acción \textbf{sube} por encima del strike + prima. & Paga la prima. Tiene derecho a
+\textbf{vender} al strike. Gana si la acción \textbf{baja} por debajo del strike $-$ prima. \\
+\hline
+\textbf{Lanzador (vendedor)} & Cobra la prima. Está obligado a vender si el comprador ejerce. &
+Cobra la prima. Está obligado a comprar si el comprador ejerce. \\ \hline
+\textbf{Pérdida máxima del comprador} & La prima pagada. & La prima pagada. \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{recuadro}
+\textbf{Ejemplo de CALL.} Una acción vale \$1.000. Compro un call con strike \$1.100 que vence en
+dos meses, pagando una prima de \$50 por acción. Un lote son 100 acciones: invierto
+\textbf{\$5.000}.
+\begin{itemize}[leftmargin=*,nosep]
+  \item Si al vencimiento la acción vale \$1.300: ejerzo, compro a \$1.100 lo que vale \$1.300.
+        Ganancia $= (1.300 - 1.100 - 50) \times 100 =$ \textbf{\$15.000} (300\% de lo
+        invertido).
+  \item Si la acción queda en \$1.100 o menos: no ejerzo y pierdo la prima, \textbf{\$5.000}
+        (100\% de lo invertido).
+  \item Punto de equilibrio: \$1.150 (strike + prima).
+\end{itemize}
+\textbf{Ejemplo de PUT como seguro.} Tengo 100 acciones a \$1.000 y temo una caída. Compro un put
+con strike \$950 pagando \$40 por acción (\$4.000). Si la acción cae a \$800, puedo vender a
+\$950: el put me paga $(950 - 800 - 40) \times 100 =$ \textbf{\$11.000}, que compensa buena
+parte de la caída. Si la acción sube, pierdo solo los \$4.000, como quien paga un seguro.
+\end{recuadro}
+
+\paragraph*{Para qué se usan las opciones.} Para \textbf{especular} con poco dinero
+(apalancamiento), para \textbf{cubrirse} de caídas (puts como seguro) o para \textbf{generar
+ingresos} lanzando opciones sobre acciones que ya se tienen (\textit{lanzamiento cubierto}).
+\textbf{Advertencia:} la mayoría de las opciones compradas vencen sin valor, y el lanzador
+descubierto puede tener pérdidas muy grandes. Son instrumentos para inversores con experiencia.
+
+\subsubsection*{4.9. La venta en corto (\textit{short})}
+\textbf{Ir ``corto''} es apostar a que un precio \textbf{va a bajar}. Como no se puede vender lo
+que no se tiene, el inversor \textbf{toma prestadas} las acciones (préstamo de valores, por el
+que paga una tasa), las vende hoy y más adelante las recompra para devolverlas.
+
+\begin{recuadro}
+\textbf{Ejemplo:} tomo prestadas 100 acciones que valen \$1.000 y las vendo: recibo \$100.000.
+\begin{itemize}[leftmargin=*,nosep]
+  \item Si bajan a \$800, las recompro por \$80.000 y las devuelvo: gano \textbf{\$20.000}
+        (menos el costo del préstamo).
+  \item Si suben a \$1.400, tengo que recomprarlas por \$140.000: pierdo \textbf{\$40.000}.
+\end{itemize}
+Comprando acciones, lo máximo que se puede perder es lo invertido (si la acción vale cero). En
+un corto la pérdida \textbf{no tiene límite}, porque el precio puede subir indefinidamente.
+\end{recuadro}
+
+Lo contrario del corto es la \textbf{posición larga} (\textit{long}): comprar esperando que suba.
+En Argentina la venta en corto está habilitada en BYMA, con préstamo de valores y garantías.
+
+\subsubsection*{4.10. Apalancamiento y \textit{margin call}}
+\textbf{Apalancarse} es invertir con dinero prestado (por ejemplo, con una caución tomadora o
+con derivados) para multiplicar el resultado. Multiplica las ganancias, pero también las
+pérdidas. Si las garantías pierden valor, el broker exige reponerlas (\textbf{llamado de
+margen} o \textit{margin call}); si no se reponen, \textbf{vende las posiciones} aunque sea con
+pérdida.
+
+\subsubsection*{4.11. Arbitraje}
+Aprovechar una diferencia de precio del mismo activo en dos mercados o monedas (por ejemplo, un
+CEDEAR que en pesos quedó desalineado respecto de su precio en Nueva York). Los arbitrajistas
+hacen que los precios se mantengan alineados.
+
+% ============================================================
+\section*{5. MERCADO ALCISTA Y BAJISTA: TOROS Y OSOS}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.44\linewidth}|p{0.44\linewidth}|}
+\hline
+\textbf{Mercado alcista (\textit{bull market})} & \textbf{Mercado bajista (\textit{bear market})}
+\\ \hline
+El \textbf{toro} ataca de abajo hacia arriba con sus cuernos: los precios \textbf{suben}. &
+El \textbf{oso} ataca de arriba hacia abajo con sus garras: los precios \textbf{bajan}. \\
+\hline
+Por convención, una suba de 20\% o más desde un mínimo reciente. & Por convención, una caída de
+20\% o más desde un máximo reciente. \\ \hline
+Optimismo, economía en crecimiento, empresas que ganan más, tasas bajas. & Pesimismo, recesión,
+crisis, suba de tasas, guerras. \\ \hline
+Un inversor \textbf{\textit{bullish}} (alcista) espera subas: compra o va largo. & Un inversor
+\textbf{\textit{bearish}} (bajista) espera caídas: vende, se cubre con puts o va corto. \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Otros términos del ciclo.}
+\begin{itemize}
+  \item \textbf{Rally:} suba fuerte en poco tiempo.
+  \item \textbf{Corrección:} caída de entre 10\% y 20\% dentro de una tendencia alcista; es
+        normal y frecuente.
+  \item \textbf{Crash:} desplome brusco en pocos días (1929, 1987, 2008, marzo de 2020).
+  \item \textbf{Burbuja:} los precios suben muy por encima del valor real porque todos compran
+        esperando que siga subiendo (las ``puntocom'' en 2000, la vivienda en EE.\,UU. en 2007).
+        Cuando ``explota'', la caída es muy fuerte.
+  \item \textbf{Volatilidad:} cuánto y qué tan rápido se mueven los precios. El índice
+        \textbf{VIX} mide la volatilidad esperada en EE.\,UU. y se lo llama ``índice del miedo''.
+  \item \textbf{Toma de ganancias:} ventas después de una suba para asegurar lo ganado.
+\end{itemize}
+
+\paragraph*{La psicología del inversor.}
+Los errores más comunes no son técnicos sino emocionales: comprar por miedo a quedarse afuera
+(\textbf{FOMO}) cuando algo ya subió mucho, y vender en \textbf{pánico} cuando cae. Por eso se
+dice que hay que ``comprar cuando hay miedo y ser prudente cuando hay euforia''.
+
+% ============================================================
+\section*{6. CÓMO SE ANALIZA UNA INVERSIÓN}
+
+\subsubsection*{6.1. Análisis fundamental}
+Estudia el \textbf{valor real} de una empresa: sus ventas, ganancias, deudas, la calidad de sus
+directivos, su sector y su futuro. Algunos indicadores:
+\begin{itemize}
+  \item \textbf{Capitalización bursátil:} precio de la acción $\times$ cantidad de acciones. Es
+        lo que ``vale'' la empresa en la bolsa.
+  \item \textbf{Ganancia por acción (EPS):} ganancia neta $\div$ cantidad de acciones.
+  \item \textbf{Relación precio/ganancia (P/E o PER):} precio $\div$ ganancia por acción. Indica
+        cuántos años de ganancias se pagan; un P/E muy alto puede indicar una acción cara (o
+        mucha expectativa de crecimiento).
+  \item \textbf{Rendimiento por dividendo:} dividendo anual $\div$ precio.
+  \item \textbf{Endeudamiento:} deuda en relación al patrimonio.
+\end{itemize}
+
+\subsubsection*{6.2. Análisis técnico}
+Estudia los \textbf{gráficos de precios y volúmenes} buscando patrones:
+\begin{itemize}
+  \item \textbf{Velas japonesas:} cada vela muestra el precio de apertura, cierre, máximo y mínimo
+        de un período.
+  \item \textbf{Tendencias:} alcista (máximos y mínimos cada vez más altos), bajista o lateral.
+  \item \textbf{Soportes y resistencias:} niveles donde el precio suele dejar de bajar o de subir.
+  \item \textbf{Medias móviles:} promedios del precio de los últimos 50 o 200 días, para
+        suavizar el ruido diario.
+\end{itemize}
+Ningún análisis predice el futuro con seguridad. Los profesionales suelen combinar ambos y,
+sobre todo, administrar el riesgo.
+
+% ============================================================
+\section*{7. LAS BOLSAS DEL MERCOSUR Y DE LA REGIÓN}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.20\linewidth}|p{0.27\linewidth}|p{0.43\linewidth}|}
+\hline
+\textbf{País} & \textbf{Bolsa} & \textbf{Características} \\ \hline
+Brasil & \textbf{B3} (Brasil, Bolsa, Balcão), San Pablo & La bolsa más grande de América Latina.
+Su índice es el \textbf{Ibovespa}, con empresas como Petrobras, Vale, Itaú y Embraer. \\ \hline
+Uruguay & Bolsa de Valores de Montevideo & Mercado chico, centrado en bonos del Estado
+uruguayo. \\ \hline
+Paraguay & Bolsa de Valores de Asunción & Mercado en crecimiento, principalmente de renta fija.
+\\ \hline
+Chile (no Mercosur) & Bolsa de Santiago & Índice IPSA. Uno de los mercados más desarrollados de
+la región. \\ \hline
+México (no Mercosur) & Bolsa Mexicana de Valores & Índice S\&P/BMV IPC. \\ \hline
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{8. LAS BOLSAS DE ESTADOS UNIDOS Y DEL MUNDO}
+
+\subsubsection*{8.1. Estados Unidos: el mercado más grande del mundo}
+\begin{itemize}
+  \item \textbf{NYSE} (New York Stock Exchange): la bolsa de Wall Street, la más grande del
+        mundo por valor de las empresas listadas.
+  \item \textbf{Nasdaq:} bolsa electrónica donde cotizan la mayoría de las grandes empresas
+        tecnológicas (Apple, Microsoft, Nvidia, Alphabet, Amazon, Meta).
+  \item \textbf{ADR:} certificados con los que empresas extranjeras cotizan en EE.\,UU. Varias
+        argentinas lo hacen (YPF, Grupo Galicia, Pampa Energía, Telecom); su precio en Nueva
+        York es una referencia de cómo ve el mundo a la Argentina.
+\end{itemize}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.22\linewidth}|p{0.68\linewidth}|}
+\hline
+\textbf{Índice} & \textbf{Qué mide} \\ \hline
+\textbf{Dow Jones Industrial Average} & El más antiguo (1896). Solo 30 grandes empresas
+``tradicionales'' (Boeing, Coca-Cola, JPMorgan, McDonald's...). Se calcula por precio. \\ \hline
+\textbf{S\&P 500} & Las 500 empresas más grandes de EE.\,UU. Es el índice de referencia para medir
+``al mercado'' estadounidense. \\ \hline
+\textbf{Nasdaq Composite / Nasdaq 100} & Todas las empresas del Nasdaq (o las 100 mayores no
+financieras). Muy concentrado en tecnología. \\ \hline
+\textbf{Russell 2000} & Empresas pequeñas. \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{8.2. Otros mercados del mundo}
+\begin{center}
+\small
+\begin{tabular}{|p{0.22\linewidth}|p{0.30\linewidth}|p{0.38\linewidth}|}
+\hline
+\textbf{Región} & \textbf{Bolsa} & \textbf{Índice principal} \\ \hline
+Europa & Euronext, Fráncfort, Londres & Euro Stoxx 50, DAX (Alemania), CAC 40 (Francia),
+FTSE 100 (Reino Unido), FTSE MIB (Italia) \\ \hline
+Japón & Bolsa de Tokio & Nikkei 225 \\ \hline
+China & Shanghái, Shenzhen, Hong Kong & Shanghai Composite, Hang Seng \\ \hline
+Global & --- & MSCI World, MSCI Emerging Markets (índices que reúnen muchos países) \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{El mundo conectado.} Los mercados se influyen entre sí: una suba de tasas en
+Estados Unidos, un conflicto armado o una crisis en China mueven los precios de acciones,
+bonos y \textbf{materias primas} (petróleo, oro, soja, cobre) en todo el mundo, incluida la
+Argentina. Para un país exportador de granos y energía, el precio internacional de la soja y
+del petróleo es tan importante como el Merval.
+
+\subsubsection*{8.3. Bonos del mundo}
+\begin{itemize}
+  \item \textbf{Bonos del Tesoro de EE.\,UU. (Treasuries):} considerados la inversión más segura
+        del mundo; su rendimiento a 10 años es la base para medir el riesgo de los demás países.
+  \item \textbf{Bunds} (Alemania), \textbf{Gilts} (Reino Unido), \textbf{JGB} (Japón): bonos de
+        países desarrollados, también de bajo riesgo.
+  \item \textbf{Bonos de países emergentes} (Argentina, Brasil, Turquía...): pagan más porque
+        tienen más riesgo.
+  \item Las \textbf{calificadoras de riesgo} (S\&P, Moody's, Fitch) ponen notas a países y
+        empresas: AAA es la máxima; desde BB+ hacia abajo se considera ``especulativo''.
+\end{itemize}
+
+% ============================================================
+\section*{9. INSTRUMENTOS PARA EL PEQUEÑO INVERSOR}
+
+\subsubsection*{9.1. Fondos comunes de inversión (FCI)}
+Un \textbf{FCI} junta el dinero de muchos ahorristas y lo invierte un profesional (la sociedad
+gerente) según un reglamento aprobado por la CNV. Cada ahorrista recibe
+\textbf{cuotapartes}.
+\begin{itemize}
+  \item \textbf{Money market:} invierten en plazos fijos y cuentas remuneradas; rescate
+        inmediato y bajo riesgo. Son los que usan muchas billeteras virtuales para dar
+        rendimiento diario.
+  \item \textbf{Renta fija:} bonos y letras, en pesos o en dólares.
+  \item \textbf{Renta variable:} acciones.
+  \item \textbf{Mixtos}, \textbf{pymes} e \textbf{infraestructura}.
+\end{itemize}
+\textbf{Ventajas:} diversificación con poco dinero y gestión profesional.
+\textbf{Contras:} cobran honorarios y, salvo los money market, su valor puede bajar.
+
+\subsubsection*{9.2. ETF (Exchange Traded Funds)}
+Un \textbf{ETF} es un fondo que \textbf{cotiza en la bolsa como si fuera una acción} y que, en
+general, \textbf{replica un índice}. Por ejemplo, el ETF \textbf{SPY} o el \textbf{IVV}
+replican el S\&P 500: comprando una sola unidad se tiene una pequeña parte de las 500
+empresas. Hay ETF de países, sectores (tecnología, energía), materias primas (oro, cobre) y
+bonos. Tienen comisiones bajas y son una forma sencilla de diversificar. La inversión
+\textbf{pasiva} (comprar el índice y mantenerlo muchos años) suele superar, a largo plazo, a la
+mayoría de los inversores que intentan ``ganarle al mercado''.
+
+\subsubsection*{9.3. CEDEARs}
+Los \textbf{CEDEARs} (Certificados de Depósito Argentinos) permiten comprar en BYMA, \textbf{en
+pesos o dólares}, acciones y ETF que cotizan en el exterior (Apple, Coca-Cola, Mercado Libre,
+Boeing, el SPY). Un banco o la Caja de Valores compra el título original en el exterior y
+emite certificados en la Argentina con un \textbf{ratio} (por ejemplo, 10 CEDEARs = 1 acción).
+\begin{itemize}
+  \item Como el activo está en dólares, su precio en pesos sigue al dólar
+        (\textbf{cobertura cambiaria}) y además a la acción.
+  \item Hoy hay \textbf{más de 400 CEDEARs} disponibles en BYMA, incluidos muchos de ETF.
+  \item Riesgos: los de la empresa o índice, más el tipo de cambio.
+\end{itemize}
+
+\subsubsection*{9.4. Criptoactivos}
+Bitcoin, Ethereum y las \textbf{stablecoins} (como USDT o USDC, que siguen al dólar) se compran
+en exchanges. En Argentina, las plataformas deben estar inscriptas en la CNV como
+\textbf{Proveedores de Servicios de Activos Virtuales (PSAV)}. Son \textbf{muy volátiles}, no
+tienen respaldo de un Estado ni de una empresa, y son el terreno preferido de muchas estafas.
+
+\subsubsection*{9.5. Comparación rápida}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.22\linewidth}|}
+\hline
+\textbf{Instrumento} & \textbf{Qué compro} & \textbf{Riesgo} & \textbf{Liquidez} &
+\textbf{Para qué sirve} \\ \hline
+Plazo fijo & Un depósito bancario & Bajo & Al vencimiento & Ahorro de corto plazo en pesos \\
+\hline
+FCI money market & Cuotapartes de un fondo & Bajo & Inmediata & Tener el dinero disponible y
+rindiendo \\ \hline
+Caución colocadora & Un préstamo de días & Bajo & A los pocos días & Colocar pesos o dólares
+de corto plazo \\ \hline
+Bonos y ON & Deuda de un Estado o empresa & Bajo a alto, según emisor & Alta (bolsa) & Renta
+periódica \\ \hline
+Acciones & Parte de una empresa & Alto & Alta (bolsa) & Largo plazo \\ \hline
+ETF / CEDEARs & Una canasta de acciones o una acción del exterior & Medio a alto & Alta (bolsa)
+& Diversificar, largo plazo \\ \hline
+Futuros y opciones & Un contrato derivado & Muy alto & Alta & Cobertura o especulación \\
+\hline
+Criptoactivos & Un activo digital & Muy alto & Alta & Especulación \\ \hline
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{10. LOS BANCOS CENTRALES: BCRA Y RESERVA FEDERAL}
+
+Un \textbf{banco central} es la institución que emite la moneda de un país y regula el sistema
+financiero. Sus decisiones mueven todos los mercados.
+
+\subsubsection*{10.1. Banco Central de la República Argentina (BCRA)}
+\begin{itemize}
+  \item \textbf{Emite} el peso y administra la cantidad de dinero en la economía.
+  \item Busca la \textbf{estabilidad monetaria y financiera} (cuidar el valor del peso).
+  \item Administra las \textbf{reservas internacionales} (dólares, oro y otras divisas que
+        respaldan la moneda y permiten pagar importaciones y deuda).
+  \item Fija la \textbf{política cambiaria} (cómo se determina el precio del dólar oficial).
+  \item \textbf{Regula y supervisa} a bancos y entidades financieras y protege a los usuarios.
+\end{itemize}
+
+\subsubsection*{10.2. Reserva Federal de Estados Unidos (Fed)}
+La \textbf{Fed} es el banco central de Estados Unidos y emite el dólar, la moneda de reserva
+del mundo. Tiene un \textbf{doble mandato}: \textbf{pleno empleo} y \textbf{estabilidad de
+precios} (inflación cercana al 2\% anual). Su principal herramienta es la \textbf{tasa de
+fondos federales}, que decide el Comité Federal de Mercado Abierto (FOMC) en ocho reuniones al
+año.
+
+\begin{recuadro}
+\textbf{¿Por qué a la Argentina le importa la tasa de la Fed?}
+\begin{itemize}[leftmargin=*,nosep]
+  \item Si la Fed \textbf{sube} la tasa, los inversores pueden ganar más en bonos de EE.\,UU.
+        sin riesgo, entonces se van de los países emergentes: suben el riesgo país y el dólar,
+        bajan las acciones y los bonos argentinos, y se encarece la deuda.
+  \item Si la Fed \textbf{baja} la tasa, ocurre lo contrario: llegan más inversiones a los
+        emergentes.
+\end{itemize}
+\textbf{Dato:} en su reunión del 28 de octubre de 2026 la Fed mantuvo la tasa en el rango de
+3,75\% a 4\%, preocupada por una inflación que sigue alta.
+\end{recuadro}
+
+% ============================================================
+\section*{11. EL TIEMPO COMO ALIADO: INTERÉS COMPUESTO}
+
+El \textbf{interés compuesto} es ganar intereses sobre los intereses ya ganados. Con el tiempo
+el efecto se vuelve enorme.
+
+\begin{recuadro}
+\textbf{Ejemplo:} ahorrar \textbf{USD 100 por mes} en una inversión que rinde en promedio 7\%
+anual.
+\begin{itemize}[leftmargin=*,nosep]
+  \item En \textbf{10 años} se aportaron USD 12.000 y se acumulan unos \textbf{USD 17.300}.
+  \item En \textbf{30 años} se aportaron USD 36.000 y se acumulan unos \textbf{USD 122.000}.
+\end{itemize}
+Empezar joven es la mayor ventaja que tiene un inversor. (El 7\% es un supuesto de ejemplo; los
+rendimientos reales varían año a año y pueden ser negativos.)
+\end{recuadro}
+
+% ============================================================
+\section*{12. CUIDADOS DEL INVERSOR}
+
+\begin{itemize}
+  \item \textbf{Primero, un fondo de emergencia:} antes de invertir en algo riesgoso, tener
+        ahorrados algunos meses de gastos en algo líquido y seguro.
+  \item \textbf{Invertir solo dinero que no se necesita} en el corto plazo.
+  \item \textbf{Entender lo que se compra:} si no se puede explicar en dos frases, mejor no.
+  \item \textbf{Diversificar} entre instrumentos, monedas y plazos.
+  \item \textbf{Operar solo con agentes registrados en la CNV}: se puede verificar en su sitio.
+  \item \textbf{Desconfiar} de quien promete ganancias altas y seguras, ``esquemas'' de
+        referidos, ``trading'' guiado por grupos de WhatsApp o Telegram, o supuestos expertos
+        en redes sociales: son las estafas financieras más comunes (esquemas Ponzi).
+  \item \textbf{Nunca} compartir claves ni códigos de la cuenta del broker.
+  \item \textbf{Informarse en fuentes confiables:} CNV, BCRA, BYMA Educa, prensa económica.
+\end{itemize}
+
+% ============================================================
+\section*{13. GLOSARIO BURSÁTIL}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{0.22\linewidth}|p{0.68\linewidth}|}
+\hline
+\textbf{Término} & \textbf{Significado} \\ \hline
+Acción & Parte del capital de una empresa. \\ \hline
+\textit{Blue chip} & Acción de una empresa grande, sólida y muy negociada. \\ \hline
+Boleto & Comprobante de cada operación realizada. \\ \hline
+Cartera (portafolio) & Conjunto de inversiones de una persona. \\ \hline
+Cotización & Precio de un título en el mercado. \\ \hline
+Cupón & Pago de intereses de un bono. \\ \hline
+Dividendo & Ganancia que una empresa reparte entre sus accionistas. \\ \hline
+\textit{Hedge} (cobertura) & Operación para protegerse de un riesgo. \\ \hline
+IPO & Oferta pública inicial: cuando una empresa sale a cotizar por primera vez. \\ \hline
+Liquidez & Facilidad para vender un activo rápido sin perder precio. \\ \hline
+Long / Short & Posición compradora (gana si sube) / vendedora (gana si baja). \\ \hline
+Prima & Precio que se paga por una opción. \\ \hline
+Rueda & Jornada de negociación. \\ \hline
+Spread & Diferencia entre la punta compradora y la vendedora. \\ \hline
+Strike & Precio de ejercicio de una opción. \\ \hline
+Tenencia & Lo que tiene el inversor en su cuenta. \\ \hline
+Ticker & Código abreviado de un título. \\ \hline
+Volatilidad & Intensidad con que varían los precios. \\ \hline
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{14. ACTIVIDADES DEL MÓDULO}
+
+\begin{enumerate}
+  \item \textbf{Termómetro del mercado:} durante dos semanas, registrar en una planilla el
+        Merval, el riesgo país, el dólar oficial y MEP, el S\&P 500, el Ibovespa y el precio de
+        un bono (por ejemplo, GD30). Graficar y relacionar los movimientos con las noticias.
+        ¿El mercado está \textit{bullish} o \textit{bearish}?
+  \item \textbf{Riesgo país:} con el rendimiento del bono del Tesoro de EE.\,UU. a 10 años y el
+        riesgo país del día, calcular cuánto rinden aproximadamente los bonos argentinos en
+        dólares.
+  \item \textbf{Comparar brokers:} elegir tres brokers o bancos y comparar requisitos de apertura,
+        comisiones, instrumentos disponibles y facilidad de uso. Verificar su registro en la CNV.
+  \item \textbf{Dólar MEP:} con las cotizaciones del día de AL30 y AL30D (o GD30 y GD30D),
+        calcular el dólar MEP y compararlo con el oficial.
+  \item \textbf{Cartera simulada:} con \$1.000.000 ficticios, armar una cartera diversificada
+        (FCI money market, caución, un bono, acciones argentinas y CEDEARs) y seguirla durante
+        un mes. Comparar con haber comprado dólares o hecho un plazo fijo.
+  \item \textbf{Opciones en papel:} con el precio actual de GGAL y las primas de sus opciones,
+        calcular la ganancia o pérdida de comprar un call y un put si al vencimiento la acción
+        sube 15\% o baja 15\%.
+  \item \textbf{Cobertura con futuros:} un taller debe pagar USD 5.000 en dos meses; con el precio
+        del dólar futuro del día, explicar cómo se cubriría y qué pasa si el dólar sube o baja.
+  \item \textbf{Investigar una empresa:} elegir una empresa que cotice en BYMA o un CEDEAR del
+        sector aeronáutico o tecnológico (por ejemplo, Boeing o Mercado Libre; o Embraer en la
+        B3). Explicar qué hace, en qué bolsa cotiza, su capitalización, su P/E y cómo evolucionó
+        su precio.
+  \item \textbf{La Fed y nosotros:} buscar la última decisión de la Fed y del BCRA y explicar
+        cómo pueden afectar el dólar, el riesgo país y el precio de los bonos argentinos.
+  \item \textbf{Detectar la estafa:} analizar publicidades de ``inversiones'' en redes sociales
+        e identificar señales de alerta.
+\end{enumerate}

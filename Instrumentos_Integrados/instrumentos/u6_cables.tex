@@ -1,0 +1,150 @@
+% ============================================================
+% UNIDAD 6: CABLES AERONÁUTICOS, MAZOS Y EWIS
+% ============================================================
+\clearpage
+\section*{UNIDAD 6: CABLES AERONÁUTICOS}
+\subsection*{Tipos de cable, selección, mazos, blindajes, masas y EWIS}
+
+\begin{recuadro}
+\textbf{Objetivo de la unidad:} conocer los tipos de cables usados en aeronaves, seleccionar la
+sección adecuada, armar e instalar mazos según las prácticas aceptadas, y aplicar correctamente
+los blindajes y las masas.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{1. POR QUÉ NO CUALQUIER CABLE}
+
+En una aeronave los cables soportan vibración, temperaturas extremas, fluidos (combustible,
+aceite, fluido hidráulico) y, en caso de incendio, no deben propagar la llama ni producir humo
+tóxico. Por eso se usan cables con normas específicas. \textbf{Nunca se usan cables con aislación
+de PVC} (los de uso domiciliario o automotor): emiten gases tóxicos y corrosivos al quemarse.
+
+El conjunto de cables, conectores, terminales, soportes y protecciones de una aeronave se denomina
+\textbf{EWIS} (\textit{Electrical Wiring Interconnection System}). Después de accidentes como el
+del TWA 800 (1996) y el Swissair 111 (1998), en los que el cableado fue protagonista, las
+autoridades reforzaron los requisitos de diseño, inspección y mantenimiento del cableado.
+
+% ------------------------------------------------------------
+\section*{2. TIPOS DE CABLES}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.28\linewidth}|p{0.34\linewidth}|p{0.26\linewidth}|}
+\hline
+\textbf{Norma} & \textbf{Características} & \textbf{Uso} \\ \hline
+SAE AS22759 (ex MIL-W-22759) /16, /32, /34 & Conductor de cobre estañado, aislación de ETFE
+(Tefzel) o ETFE reticulado; 600 V; hasta 150 $^\circ$C. & El más usado en aviónica de aviación
+general \\ \hline
+AS22759 con conductor plateado o niquelado & Mayor temperatura (200 $^\circ$C o más). & Zonas
+calientes, motor \\ \hline
+MIL-W-81381 (poliimida, ``Kapton'') & Muy delgado y liviano, pero se fisura y puede producir
+\textbf{arcos que se propagan} (\textit{arc tracking}). & Aeronaves antiguas; hoy se evita y se
+inspecciona con cuidado \\ \hline
+M27500 & Cable multiconductor con o sin \textbf{blindaje} y cubierta, armado con conductores
+AS22759. & Señales, audio, buses de datos \\ \hline
+Coaxiales M17 (RG-400, RG-142) & 50 $\Omega$, PTFE. & Antenas (Unidad de microondas) \\ \hline
+Cables de par trenzado especiales & Impedancia controlada (por ejemplo, para Ethernet o buses de
+datos). & Redes de aviónica \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Cómo se lee una designación.} Por ejemplo, \texttt{M22759/16-22-9}: norma 22759,
+hoja de especificación 16 (ETFE, cobre estañado), sección \textbf{22 AWG}, color \textbf{9}
+(blanco). Un M27500 lleva en su designación la cantidad de conductores, su tipo, el blindaje y la
+cubierta.
+
+% ------------------------------------------------------------
+\section*{3. SELECCIÓN DE LA SECCIÓN (AWG)}
+
+La sección del cable se elige por dos criterios: que \textbf{no se caliente} (corriente admisible,
+según si va solo o en mazo y la altitud) y que la \textbf{caída de tensión} no supere los límites.
+Las tablas y gráficos de la circular \textbf{FAA AC 43.13-1B, capítulo 11}, son la referencia
+habitual.
+
+\begin{center}
+\small
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{AWG} & \textbf{Resistencia aprox. ($\Omega$ cada 1000 pies)} & \textbf{Uso típico en
+aviónica} \\ \hline
+24 & 25,7 & Señales, datos (cuando el fabricante lo permite) \\ \hline
+22 & 16,1 & Señales, datos, audio, discretas \\ \hline
+20 & 10,1 & Alimentación de equipos de bajo consumo \\ \hline
+18 & 6,4 & Alimentación de equipos \\ \hline
+16 & 4,0 & Alimentación de equipos de mayor consumo \\ \hline
+14 & 2,5 & Barras secundarias, luces \\ \hline
+12 & 1,6 & Barras, cargas grandes \\ \hline
+10 & 1,0 & Alimentaciones principales \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Caída de tensión máxima recomendada} (AC 43.13-1B): en sistemas de 14 V, 0,5 V en
+servicio continuo y 1 V intermitente; en sistemas de 28 V, 1 V continuo y 2 V intermitente.
+
+\begin{recuadro}
+\textbf{Ejemplo.} Una pantalla consume 3 A a 14 V y está a 4 m (13 pies) del disyuntor. El circuito
+tiene ida y vuelta (o masa cercana): longitud efectiva $\approx$ 26 pies con cable 22 AWG:
+$R = 26 \times 16{,}1 / 1000 = 0{,}42\ \Omega$; $\Delta V = 3 \times 0{,}42 = 1{,}26$ V. Supera los
+0,5 V. Con 18 AWG: $R = 26 \times 6{,}4/1000 = 0{,}17\ \Omega$; $\Delta V = 0{,}5$ V. Con 18 AWG
+queda justo en el límite; se elige 18 AWG (o 16 si se quiere margen), siempre respetando lo que
+indica el manual de instalación del equipo.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{4. IDENTIFICACIÓN DE LOS CABLES}
+
+Cada cable se identifica con un código (número de circuito, segmento, sección) impreso sobre la
+aislación (por láser o por estampado en caliente) o en manguitos termocontraíbles. Según la AC
+43.13-1B, la identificación se coloca a intervalos regulares (no más de 15 pulgadas) y cerca de
+cada extremo. El código debe coincidir con el \textbf{plano de cableado}: es lo que permite seguir
+un circuito años después.
+
+% ------------------------------------------------------------
+\section*{5. MAZOS DE CABLES E INSTALACIÓN}
+
+\begin{itemize}
+  \item \textbf{Armado en tablero:} el mazo se arma sobre un tablero con el dibujo a escala y clavos
+        o soportes que marcan el recorrido, las ramificaciones y las longitudes.
+  \item \textbf{Atado:} con \textbf{hilo de atar encerado o de fibra} (nudos de amarre) o con
+        precintos aprobados y apretados con la herramienta adecuada (sin cortar dejando filos).
+  \item \textbf{Soporte:} \textbf{abrazaderas acolchadas} (tipo MS21919) cada cierta distancia,
+        sin apretar ni aplastar los cables.
+  \item \textbf{Pasos por estructura:} siempre con \textbf{pasacables} (\textit{grommets}) o
+        protectores de borde; nunca un cable apoyado sobre un borde metálico.
+  \item \textbf{Radio de curvatura:} no menor a 10 veces el diámetro exterior del cable o mazo mayor
+        (con excepciones en los extremos, según la AC 43.13-1B); en coaxiales, el que indique el
+        fabricante.
+  \item \textbf{Separación:} los cables deben quedar separados de las líneas de combustible,
+        aceite, oxígeno y fluidos, y de los comandos de vuelo; los cables de señales sensibles
+        (audio, datos, magnetómetro) separados de los de potencia.
+  \item \textbf{Holgura de servicio:} dejar suficiente longitud para poder desconectar y reparar
+        un conector; evitar tensiones y roces con piezas móviles.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{6. BLINDAJES Y MASAS}
+
+\begin{itemize}
+  \item El \textbf{blindaje} (malla alrededor de los conductores) protege las señales de la
+        interferencia y evita que los cables irradien.
+  \item Se conecta a masa \textbf{donde lo indique el fabricante}: en un extremo (típico en audio,
+        para evitar lazos de masa que producen zumbido) o en ambos (típico en buses de datos y RF).
+  \item La conexión se hace con un \textbf{manguito de soldadura} (\textit{solder sleeve}) que suelda
+        un cable de drenaje a la malla, o terminando la malla en el \textit{backshell} del conector.
+        El ``rabo'' (\textit{pigtail}) de masa debe ser lo más corto posible.
+  \item \textbf{Masas de alimentación:} cada equipo con su retorno a un punto de masa o a una barra
+        de masas, con terminales bien ajustados sobre superficies limpias. Una masa deficiente
+        genera fallas intermitentes, ruido y lecturas erróneas de motor.
+  \item \textbf{Bonding} (unión eléctrica de la estructura): se mide en miliohms entre el equipo o
+        su bandeja y la estructura.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{7. ACTIVIDADES DE LA UNIDAD}
+\begin{enumerate}
+  \item Interpretar las designaciones: \texttt{M22759/16-20-2} y \texttt{M22759/32-22-9}.
+  \item Calcular la sección necesaria para un equipo de 5 A en 28 V a 6 m del disyuntor.
+  \item Identificar en muestras de cables cuáles son aptos para uso aeronáutico y cuáles no.
+  \item Armar en un tablero un pequeño mazo de tres ramas con atado de hilo y abrazaderas.
+  \item Investigar el rol del cableado en el accidente del Swissair 111 y qué cambió después.
+\end{enumerate}

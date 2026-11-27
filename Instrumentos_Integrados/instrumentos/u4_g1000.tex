@@ -1,0 +1,139 @@
+% ============================================================
+% UNIDAD 4: SISTEMAS INTEGRADOS G1000 Y G5000
+% ============================================================
+\clearpage
+\section*{UNIDAD 4: SISTEMAS INTEGRADOS}
+\subsection*{Garmin G1000 / G1000 NXi y la familia G3000 / G5000}
+
+\begin{recuadro}
+\textbf{Objetivo de la unidad:} conocer la arquitectura de un sistema de aviónica totalmente
+integrado, sus unidades reemplazables, cómo se comunican, cómo se configuran y actualizan, y los
+puntos clave de su mantenimiento.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{1. EL GARMIN G1000}
+
+Presentado en 2004, el G1000 fue el primer sistema totalmente integrado de uso masivo en la
+aviación general. Equipa, entre otros, a los Cessna 172, 182, 206 y Caravan, Diamond DA40, DA42 y
+DA62, Piper Seneca y Mooney, y versiones de turbohélices como el King Air. En 2017 apareció la
+versión \textbf{G1000 NXi}, con procesadores y pantallas más rápidos y nuevas funciones, que también
+se ofrece como actualización de los G1000 existentes.
+
+\subsubsection*{1.1. Unidades del sistema (configuración típica de un avión monomotor)}
+\begin{center}
+\small
+\begin{tabular}{|p{0.22\linewidth}|p{0.66\linewidth}|}
+\hline
+\textbf{Unidad} & \textbf{Función} \\ \hline
+GDU (PFD y MFD) & Pantallas de 10,4 pulgadas (o 15 en otras instalaciones); idénticas entre sí,
+la función la define su conexión. \\ \hline
+GIA 63 / 63W (dos) & \textbf{Unidades de aviónica integrada}: cada una contiene un receptor GPS
+(63W: con WAAS/SBAS), una radio VHF COM, un receptor VHF NAV y de senda de planeo, y funciona como
+``centro de comunicaciones'' entre los demás equipos. \\ \hline
+GDC 74 & Computadora de datos de aire. \\ \hline
+GRS 77 / GRS 79 & AHRS. \\ \hline
+GMU 44 & Magnetómetro, en el ala o la cola. \\ \hline
+GEA 71 & Unidad de adquisición de datos del motor y la célula. \\ \hline
+GMA 1347 & Panel de audio con intercomunicador y radiobaliza. \\ \hline
+GTX 33 / GTX 345R & Transpondedor modo S remoto (con ADS-B en las versiones nuevas). \\ \hline
+GFC 700 & Piloto automático integrado (servos en los comandos). \\ \hline
+GDL & Receptor de datos meteorológicos por satélite (opcional). \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{1.2. Cómo se comunican}
+\begin{center}
+\begin{tikzpicture}[scale=0.92, transform shape, node distance=0.5cm, every node/.style={font=\footnotesize, align=center},
+  b/.style={draw, thick, fill=ppAzul!8, minimum height=0.9cm, text width=1.9cm},
+  s/.style={draw, thick, fill=orange!12, minimum height=0.8cm, text width=1.6cm}]
+  \node[b] (pfd) at (0,3) {PFD (GDU)};
+  \node[b] (mfd) at (6,3) {MFD (GDU)};
+  \node[b] (g1) at (1.5,1.2) {GIA 1};
+  \node[b] (g2) at (4.5,1.2) {GIA 2};
+  \draw[very thick, ppAzul] (pfd) -- node[above] {Ethernet (HSDB)} (mfd);
+  \draw[very thick, ppAzul] (pfd) -- (g1); \draw[very thick, ppAzul] (mfd) -- (g2);
+  \draw[very thick, ppAzul] (pfd) -- (g2); \draw[very thick, ppAzul] (mfd) -- (g1);
+  \node[s] (adc) at (-1.5,-0.8) {ADC};
+  \node[s] (ahrs) at (0.5,-0.8) {AHRS + magnetóm.};
+  \node[s] (gea) at (2.5,-0.8) {Motor (GEA)};
+  \node[s] (xpdr) at (4.5,-0.8) {Transp.};
+  \node[s] (aud) at (6.5,-0.8) {Audio};
+  \node[s] (ap) at (8.4,-0.8) {Piloto autom.};
+  \foreach \n in {adc,ahrs,gea} \draw[thick] (\n.north) -- (g1.south);
+  \foreach \n in {gea,xpdr,aud,ap} \draw[thick] (\n.north) -- (g2.south);
+  \draw[thick, dashed] (adc.north) -- (pfd.south west);
+  \node at (3,-1.75) {\scriptsize Líneas finas: buses serie (RS-232, RS-485) y ARINC 429; línea
+  gruesa: red Ethernet de alta velocidad (esquema simplificado)};
+\end{tikzpicture}
+\end{center}
+
+Las pantallas y las GIA forman una red de alta velocidad. Los sensores y equipos periféricos se
+conectan, generalmente de forma redundante, a las GIA y a las pantallas mediante buses serie y
+ARINC 429. Si se pierde una GIA, el sistema sigue funcionando con la otra (con una radio y un GPS
+menos).
+
+% ------------------------------------------------------------
+\section*{2. CONFIGURACIÓN, SOFTWARE Y BASES DE DATOS}
+
+\begin{itemize}
+  \item \textbf{Modo de configuración:} se ingresa encendiendo las pantallas con una tecla
+        presionada (según el procedimiento del fabricante). Permite ver el estado de cada unidad,
+        cargar software y configuración, calibrar sensores y leer registros de fallas.
+  \item \textbf{Software y configuración:} se cargan desde una \textbf{tarjeta SD} preparada con la
+        versión aprobada para esa aeronave. Cuando se reemplaza una unidad (LRU), hay que cargarle
+        el software y la configuración correspondientes; si no coinciden, el sistema muestra
+        alertas de incompatibilidad.
+  \item \textbf{Bases de datos:} navegación (ciclo \textbf{AIRAC} de 28 días), terreno, obstáculos,
+        planos de aeropuertos y cartas. Se actualizan por tarjeta SD o en forma inalámbrica en los
+        sistemas nuevos. Volar IFR con una base de navegación vencida tiene limitaciones.
+  \item \textbf{Registro:} toda carga de software o de configuración se registra en los registros
+        de mantenimiento con la versión instalada.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{3. LA FAMILIA G3000 Y G5000}
+
+Para aviones turbohélice y jets, Garmin desarrolló sistemas con pantallas más grandes y
+\textbf{controladores táctiles}:
+\begin{itemize}
+  \item \textbf{G3000:} jets livianos y turbohélices (por ejemplo, HondaJet, Cessna Citation M2 y
+        derivados en otros fabricantes).
+  \item \textbf{G5000:} jets medianos, como los Cessna Citation Latitude, Longitude y Sovereign+ y
+        los Learjet 70/75. Tres pantallas de gran tamaño (14 pulgadas) en formato apaisado, que se
+        pueden dividir en ventanas, y \textbf{controladores con pantalla táctil} en el pedestal desde
+        donde se manejan radios, plan de vuelo, sistemas y listas de chequeo.
+  \item Integran funciones de aviones de transporte: piloto automático con acelerador automático en
+        algunos modelos, sistema de alertas de la tripulación (CAS), páginas sinópticas de los
+        sistemas (combustible, eléctrico, presurización) y planificación del rendimiento.
+  \item Las versiones \textbf{Prime} recientes renovaron el software y la presentación, y aportaron
+        funciones que luego se trasladaron a la aviación general.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{4. MANTENIMIENTO DE UN SISTEMA INTEGRADO}
+\begin{itemize}
+  \item Leer los \textbf{registros de fallas} y las páginas de estado antes de cambiar nada.
+  \item Verificar primero \textbf{alimentación, conectores y cableado}: muchas fallas
+        ``electrónicas'' son pines flojos, conectores mal asentados o masas deficientes.
+  \item Al reemplazar una unidad: anotar número de parte, serie y versión de software; cargar
+        software y configuración; realizar las calibraciones y ensayos que indica el manual (por
+        ejemplo, AHRS y magnetómetro después de cambiar el AHRS o el magnetómetro).
+  \item Ventilación: las pantallas tienen ventiladores; uno trabado provoca sobretemperatura y
+        apagado.
+  \item Actualizar las bases de datos y registrar la vigencia.
+  \item Inspeccionar periódicamente las baterías de reserva y su prueba de capacidad.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{5. ACTIVIDADES DE LA UNIDAD}
+\begin{enumerate}
+  \item Dibujar el diagrama de interconexión de un G1000 de un Cessna 172 a partir del manual de
+        mantenimiento del avión (capítulo 34 o 42, según el fabricante).
+  \item ¿Qué funciones se pierden si falla la GIA 1? ¿Y si falla el GDC 74?
+  \item Explicar el procedimiento para actualizar la base de datos de navegación y cómo se registra.
+  \item Practicar con un entrenador o simulador de G1000 la carga de un plan de vuelo y la lectura
+        de las páginas de motor.
+  \item Comparar la cabina de un Cessna 172 con G1000 y la de una Citation Latitude con G5000:
+        cantidad y tamaño de pantallas, forma de control, funciones.
+\end{enumerate}

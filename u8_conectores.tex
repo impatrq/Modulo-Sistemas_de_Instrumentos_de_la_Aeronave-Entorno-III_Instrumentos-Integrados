@@ -1,0 +1,152 @@
+% ============================================================
+% UNIDAD 8: CONECTORES MILITARES Y D-SUB
+% ============================================================
+\clearpage
+\section*{UNIDAD 8: CONECTORES}
+\subsection*{Circulares militares, D-sub, contactos y accesorios}
+
+\begin{recuadro}
+\textbf{Objetivo de la unidad:} reconocer los conectores usados en aviónica, interpretar su
+designación, armar conectores con contactos crimpados e insertados, y usar correctamente sus
+herramientas y accesorios.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{1. CONCEPTOS GENERALES}
+
+\begin{itemize}
+  \item \textbf{Pin y casquillo:} el contacto macho (\textit{pin}) y el hembra (\textit{socket}).
+        Regla de seguridad: el lado que puede quedar \textbf{energizado} al desconectar debe tener
+        \textbf{casquillos} (hembras), para que no queden pines con tensión expuestos.
+  \item \textbf{Ficha y receptáculo:} la parte que va en el extremo del cable (\textit{plug}) y la
+        que va fija en el equipo o en un panel (\textit{receptacle}).
+  \item \textbf{Inserto y arreglo de contactos:} la pieza aislante que sostiene los contactos y su
+        distribución (cantidad, tamaño y posición).
+  \item \textbf{Polarización o clave:} ranuras y chavetas que impiden conectar dos conectores
+        iguales cruzados. Los conectores militares tienen varias posiciones de clave (N normal, A,
+        B, C\ldots).
+  \item \textbf{Contactos de crimpar y de soldar;} contactos \textbf{removibles} (se insertan y
+        extraen con herramientas) o fijos.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{2. CONECTORES D-SUB (SUBMINIATURA D)}
+
+Tienen carcasa en forma de D (que asegura la polarización), una o varias filas de contactos y
+tornillos de fijación. La norma militar es la \textbf{MIL-DTL-24308}. Son los conectores de la
+mayoría de los equipos de aviónica de aviación general (Garmin, Avidyne, Dynon, entre otros),
+generalmente en \textbf{alta densidad} y con contactos de crimpar.
+
+\begin{center}
+\small
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Tamaño de carcasa} & \textbf{Densidad estándar} & \textbf{Alta densidad} \\ \hline
+E & DE-9 (9 contactos) & DE-15 (15) \\ \hline
+A & DA-15 (15) & DA-26 (26) \\ \hline
+B & DB-25 (25) & DB-44 (44) \\ \hline
+C & DC-37 (37) & DC-62 (62) \\ \hline
+D & DD-50 (50) & DD-78 (78) \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+  \item Los contactos de crimpar se insertan desde atrás hasta que traban y se extraen con una
+        herramienta de extracción que libera la traba.
+  \item Los contactos de alta densidad son más pequeños y requieren su propia crimpadora o
+        posicionador (el que indica el fabricante del equipo).
+  \item \textbf{Numeración:} cada contacto tiene su número grabado en el inserto. Al mirar de frente
+        el conector macho y el hembra, la numeración queda espejada. En los planos se indica si la
+        vista es ``de frente'' (\textit{mating face}) o ``desde atrás'' (\textit{wire side}):
+        confundirla es un error clásico.
+  \item \textbf{Carcasas traseras} (\textit{backshells}) metálicas para fijar el mazo, dar alivio de
+        tensión y conectar el blindaje a masa.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{3. CONECTORES CIRCULARES MILITARES}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.22\linewidth}|p{0.30\linewidth}|p{0.36\linewidth}|}
+\hline
+\textbf{Norma} & \textbf{Acoplamiento} & \textbf{Características y uso} \\ \hline
+MIL-DTL-38999 & Serie I y II: bayoneta; Serie III: roscado autotrabante; Serie IV: de traba
+rápida & Alta densidad, sellado ambiental, muy usado en aeronaves modernas, sensores y equipos. \\
+\hline
+MIL-DTL-26482 & Bayoneta & Tamaño reducido, uso general en aviónica. \\ \hline
+MIL-DTL-5015 & Roscado & Robusto, para alimentación y cargas grandes; aeronaves antiguas. \\
+\hline
+MIL-DTL-83723 & Bayoneta o roscado & Aplicaciones aeronáuticas ambientales. \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Cómo se lee una designación MIL-DTL-38999.} Ejemplo: \texttt{D38999/26WD35SN}
+\begin{center}
+\small
+\begin{tabular}{|c|p{0.66\linewidth}|}
+\hline
+\texttt{D38999} & Norma MIL-DTL-38999 \\ \hline
+\texttt{/26} & Tipo de pieza: ficha recta de la serie III (otros números identifican receptáculos de
+pared, de brida, pasamuros, etc.) \\ \hline
+\texttt{W} & Terminación superficial de la carcasa (por ejemplo, cadmio verde oliva) \\ \hline
+\texttt{D} & Tamaño de carcasa (letra A a J) \\ \hline
+\texttt{35} & Arreglo de inserto (cantidad y tamaño de contactos) \\ \hline
+\texttt{S} & Contactos hembra (\textit{socket}); \texttt{P} para macho (\textit{pin}) \\ \hline
+\texttt{N} & Posición de clave normal \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Tamaños de contactos.} Se identifican por número: 22D, 20, 16, 12 (cuanto menor el
+número, mayor el contacto y la corriente que admite). Cada tamaño acepta un rango de secciones de
+cable. También hay contactos coaxiales, de fibra óptica y de alta potencia.
+
+% ------------------------------------------------------------
+\section*{4. ARMADO DE UN CONECTOR CON CONTACTOS REMOVIBLES}
+\begin{enumerate}
+  \item Verificar en el plano el número de parte del conector, de los contactos y la asignación de
+        cada cable a cada número de contacto (\textit{pinout}).
+  \item Pasar por el cable, antes de crimpar, los accesorios traseros: backshell, alivio de
+        tensión, termocontraíbles.
+  \item Crimpar cada contacto (Unidad 7) e inspeccionarlo.
+  \item Insertar cada contacto por la parte trasera del inserto con la \textbf{herramienta de
+        inserción} (de plástico, familia M81969/14) hasta escuchar o sentir la traba. Tirar
+        suavemente del cable para verificar que quedó trabado.
+  \item Colocar \textbf{tapones de sellado} en todas las cavidades sin uso: si quedan abiertas, se
+        pierde el sellado ambiental.
+  \item Armar el backshell, conectar el blindaje y ajustar al torque indicado.
+  \item Verificar \textbf{pin a pin} la continuidad y el aislamiento contra el plano.
+\end{enumerate}
+Para extraer un contacto se usa la \textbf{herramienta de extracción} del tamaño correcto,
+introducida desde atrás (o desde el frente, según el conector) para liberar la traba. Usar la
+herramienta equivocada daña el inserto, y entonces hay que cambiar el conector.
+
+\begin{recuadro}
+\textbf{Conectores en la aeronave.} Los conectores roscados en zonas de vibración se aseguran con
+\textbf{alambre de frenar} o son autotrabantes; los de bayoneta, con su traba. Antes de conectar:
+inspeccionar que no haya pines doblados, retraídos o contactos ``empujados'' hacia atrás, suciedad o
+humedad. Nunca forzar un conector: si no entra, algo está mal (clave, pin doblado).
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{5. OTROS ELEMENTOS DE INTERCONEXIÓN}
+\begin{itemize}
+  \item \textbf{Conectores de bandeja} (ARINC 404 y ARINC 600): en los racks de aviónica de los aviones
+        de transporte, con contactos de señal, de potencia y coaxiales.
+  \item \textbf{Bloques de unión y de masa} (sistemas de módulos con contactos crimpados, familia
+        M81714): permiten unir varios cables a un mismo punto (por ejemplo, todas las masas de un
+        equipo) sin empalmes.
+  \item \textbf{Regletas de terminales} con tornillos: para cables con terminales de ojal.
+  \item \textbf{Disyuntores (\textit{circuit breakers})}, interruptores, relés y fusibles (Unidad 9).
+\end{itemize}
+
+% ------------------------------------------------------------
+\section*{6. ACTIVIDADES DE LA UNIDAD}
+\begin{enumerate}
+  \item Interpretar las designaciones \texttt{D38999/20WB98PN} y \texttt{D38999/26WJ61SA}
+        (usar una tabla de arreglos de insertos).
+  \item Armar un conector D-sub de alta densidad de 26 contactos siguiendo un pinout dado.
+  \item Insertar y extraer contactos de un conector MIL-DTL-38999 con las herramientas correctas.
+  \item Identificar los conectores de un equipo de aviónica real y buscar su número de parte en el
+        manual de instalación.
+\end{enumerate}

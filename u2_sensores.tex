@@ -1,0 +1,157 @@
+% ============================================================
+% UNIDAD 2: SENSORES, ADAHRS Y BUSES DE DATOS
+% ============================================================
+\clearpage
+\section*{UNIDAD 2: SENSORES Y BUSES DE DATOS}
+\subsection*{Pitot-estático, ADC, AHRS, sensores de motor y buses de datos}
+
+\begin{recuadro}
+\textbf{Objetivo de la unidad:} conocer de dónde obtienen sus datos los instrumentos integrados:
+los sistemas de presión y la computadora de datos de aire, los sensores de actitud y rumbo, los
+sensores de motor y los buses de datos que los conectan.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{1. EL SISTEMA PITOT-ESTÁTICO}
+
+\begin{itemize}
+  \item \textbf{Toma pitot:} orientada hacia adelante, recibe la \textbf{presión total} (estática
+        más dinámica). Tiene calefacción eléctrica para evitar el hielo.
+  \item \textbf{Tomas estáticas:} orificios a ras del fuselaje (generalmente una de cada lado,
+        interconectadas) que miden la \textbf{presión estática} del aire.
+  \item \textbf{Drenajes:} puntos bajos de las líneas para eliminar el agua.
+  \item \textbf{Fuente estática alternativa:} en caso de obstrucción, toma la presión del interior
+        de la cabina.
+\end{itemize}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.26\linewidth}|p{0.22\linewidth}|p{0.40\linewidth}|}
+\hline
+\textbf{Dato} & \textbf{Presiones usadas} & \textbf{Principio} \\ \hline
+Altitud de presión & Estática & La presión disminuye con la altura (atmósfera estándar: 1013,25
+hPa, 29,92 inHg al nivel del mar). \\ \hline
+Altitud indicada & Estática + ajuste QNH & Corrige por la presión del día. \\ \hline
+Velocidad indicada (IAS) & Total -- estática & Presión dinámica $q = \frac{1}{2}\rho v^2$. \\ \hline
+Velocidad vertical & Variación de la estática & Ritmo de cambio de la presión. \\ \hline
+Mach & Total y estática & Relación entre ambas. \\ \hline
+\end{tabular}
+\end{center}
+
+% ------------------------------------------------------------
+\section*{2. LA COMPUTADORA DE DATOS DE AIRE (ADC)}
+
+La \textbf{ADC} recibe las presiones pitot y estática en \textbf{transductores de presión}
+(sensores piezorresistivos o de silicio resonante) y la temperatura exterior desde una
+\textbf{sonda de temperatura} (OAT o TAT). Calcula:
+\begin{itemize}
+  \item Altitud de presión y altitud barométrica corregida.
+  \item Velocidad indicada (IAS), calibrada (CAS) y verdadera (TAS, corregida por densidad).
+  \item Número de Mach y velocidad vertical.
+  \item Temperatura del aire exterior y densidad de altitud.
+  \item Altitud codificada para el \textbf{transpondedor} (modo C/S).
+\end{itemize}
+Envía los resultados por un bus de datos a las pantallas, al transpondedor, al piloto automático y
+al GPS. Ventaja: un solo par de líneas de pitot y estática y un solo sensor alimentan a todos los
+sistemas.
+
+% ------------------------------------------------------------
+\section*{3. ACTITUD Y RUMBO: EL AHRS}
+
+El \textbf{AHRS} (\textit{Attitude and Heading Reference System}) reemplaza a los giróscopos
+mecánicos.
+\begin{itemize}
+  \item \textbf{Giróscopos MEMS:} sensores microelectromecánicos de silicio que miden la velocidad
+        de rotación en los tres ejes.
+  \item \textbf{Acelerómetros MEMS:} miden las aceleraciones en los tres ejes (incluida la
+        gravedad, que da la referencia de ``abajo'').
+  \item \textbf{Magnetómetro:} mide el campo magnético terrestre en tres ejes para obtener el
+        rumbo. Se instala \textbf{lejos de materiales ferrosos y de cables con corriente} (en un
+        ala o en la cola), porque cualquier campo magnético cercano altera la lectura.
+  \item \textbf{Ayuda de datos de aire y GPS:} el AHRS usa la velocidad verdadera y la posición GPS
+        para corregir los errores de los acelerómetros en virajes y aceleraciones.
+\end{itemize}
+Un procesador combina todos los datos con filtros (por ejemplo, el filtro de Kalman) y entrega
+cabeceo, alabeo, rumbo, velocidad de giro y aceleraciones. Cuando el ADC y el AHRS están en una
+misma unidad se llama \textbf{ADAHRS}.
+
+\paragraph*{Comparación con los sistemas inerciales.} Los aviones de transporte usan
+\textbf{IRS}/\textbf{ADIRU} con giróscopos láser o de fibra óptica, de mucha mayor precisión, que
+además calculan posición. El AHRS de aviación general es más económico y depende de la ayuda del
+GPS y de los datos de aire.
+
+\begin{recuadro}
+\textbf{Puntos de instalación que el técnico debe cuidar.} El AHRS se monta \textbf{rígido y
+alineado} con los ejes de la aeronave (se calibra el cabeceo y el alabeo con la aeronave nivelada).
+El magnetómetro se calibra girando la aeronave en distintos rumbos sobre una rosa de los vientos o
+siguiendo el procedimiento del fabricante. Cualquier cambio posterior cerca del magnetómetro (un
+cable nuevo, una luz estroboscópica, una pieza de acero) obliga a verificarlo.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{4. SENSORES DE MOTOR Y DE SISTEMAS}
+
+Los sistemas integrados reciben los datos del motor a través de una \textbf{unidad de adquisición}
+(por ejemplo, GEA en Garmin) que digitaliza las señales de los sensores:
+\begin{center}
+\small
+\begin{tabular}{|p{0.28\linewidth}|p{0.30\linewidth}|p{0.30\linewidth}|}
+\hline
+\textbf{Parámetro} & \textbf{Sensor} & \textbf{Señal} \\ \hline
+EGT y CHT (temperatura de gases y de cilindros) & Termocuplas tipo K o J & Milivolts \\ \hline
+Temperatura de aceite y de aire & Resistencias variables (RTD, termistores) & Resistencia \\ \hline
+Presión de aceite, combustible y admisión & Transductores de presión & Tensión (0,5 a 4,5 V) o
+corriente \\ \hline
+Flujo de combustible & Turbina con sensor óptico o magnético & Pulsos \\ \hline
+RPM & Captor magnético o de efecto Hall, o señal de los magnetos & Pulsos \\ \hline
+Cantidad de combustible & Flotante resistivo o sonda capacitiva & Resistencia o frecuencia \\ \hline
+Corriente eléctrica & Shunt o sensor de efecto Hall & Milivolts \\ \hline
+Posición de flaps y compensadores & Potenciómetros & Tensión \\ \hline
+\end{tabular}
+\end{center}
+Cada sensor se configura en el sistema: tipo, rango, marcas de color de los arcos (verde, amarillo,
+rojo) según el manual de vuelo y los límites del motor, y la calibración (por ejemplo, la curva de
+los tanques de combustible).
+
+% ------------------------------------------------------------
+\section*{5. LOS BUSES DE DATOS}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.18\linewidth}|p{0.40\linewidth}|p{0.30\linewidth}|}
+\hline
+\textbf{Bus} & \textbf{Características} & \textbf{Uso típico} \\ \hline
+ARINC 429 & Unidireccional, un transmisor y hasta 20 receptores; palabras de 32 bits con etiqueta;
+12,5 o 100 kbit/s; par trenzado blindado. & Interconexión con GPS, radios, piloto automático,
+equipos de otros fabricantes \\ \hline
+RS-232 / RS-422 & Serie, punto a punto; RS-422 diferencial, más inmune al ruido. & Transpondedor,
+datos de GPS, configuración \\ \hline
+CAN & Bus multipunto diferencial, robusto, con terminaciones de 120 $\Omega$ en los extremos. &
+Red de sensores y pantallas (por ejemplo, G3X Touch) \\ \hline
+Ethernet (HSDB) & Alta velocidad entre unidades. & Red interna del G1000 y otros sistemas
+integrados \\ \hline
+ARINC 664 (AFDX) & Ethernet determinística con redundancia. & Aviones de transporte modernos
+(A380, B787) \\ \hline
+Discretas y analógicas & Señales de encendido/apagado (masa o abierto) y tensiones. & Avisos,
+selecciones, sensores \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Para el instalador.} Cada bus tiene sus reglas de cableado: pares trenzados y
+blindados, impedancia, terminaciones, longitud máxima y forma de conectar los blindajes a masa.
+Un ARINC 429 con los cables A y B invertidos o un bus CAN sin su resistencia de terminación son
+fallas típicas de instalación.
+
+% ------------------------------------------------------------
+\section*{6. ACTIVIDADES DE LA UNIDAD}
+\begin{enumerate}
+  \item Dibujar el sistema pitot-estático de una aeronave liviana con ADC e indicar qué sistemas
+        reciben sus datos.
+  \item Con un sensor de presión y un microcontrolador, calcular la altitud de presión con la
+        fórmula de la atmósfera estándar y compararla con un altímetro.
+  \item Con un módulo de giróscopos y acelerómetros MEMS (tipo MPU-6050 o similar), mostrar en la
+        computadora el cabeceo y el alabeo, y observar la deriva del giróscopo sin corrección.
+  \item Calcular cuántos milivolts entrega una termocupla tipo K con una diferencia de 400 $^\circ$C
+        (aproximadamente 41 $\mu$V/$^\circ$C).
+  \item Decodificar una palabra ARINC 429 dada en binario: etiqueta, SDI, datos, SSM y paridad.
+\end{enumerate}

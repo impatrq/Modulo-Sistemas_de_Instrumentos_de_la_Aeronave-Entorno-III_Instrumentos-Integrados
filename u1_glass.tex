@@ -1,0 +1,163 @@
+% ============================================================
+% UNIDAD 1: DEL PANEL ANALÓGICO A LA CABINA DE CRISTAL
+% ============================================================
+\clearpage
+\section*{UNIDAD 1: LA CABINA DE CRISTAL}
+\subsection*{Del panel analógico a los instrumentos integrados}
+
+\begin{recuadro}
+\textbf{Objetivo de la unidad:} conocer la clasificación y agrupación de los instrumentos de
+vuelo, la evolución hacia los sistemas electrónicos de vuelo (EFIS), las arquitecturas de los
+instrumentos integrados y el marco de normas y certificación en el que se instalan.
+\end{recuadro}
+
+% ------------------------------------------------------------
+\section*{1. LOS INSTRUMENTOS CLÁSICOS Y LA T BÁSICA}
+
+Los instrumentos de una aeronave se clasifican en \textbf{instrumentos de vuelo} (actitud,
+velocidad, altitud, rumbo), \textbf{de navegación} (VOR, ILS, GPS, ADF), \textbf{de motor}
+(revoluciones, presiones, temperaturas, combustible) y \textbf{de sistemas} (eléctrico,
+hidráulico, presurización, tren, flaps).
+
+Durante décadas los instrumentos de vuelo fueron mecánicos o electromecánicos, agrupados en la
+\textbf{T básica}: actitud en el centro, velocidad a la izquierda, altitud a la derecha y rumbo
+debajo, para que la mirada del piloto recorra siempre el mismo camino. Con el indicador de viraje
+y el variómetro se forma el clásico panel de ``seis instrumentos''.
+
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\footnotesize, align=center}]
+  \draw[ppAzul!25, line width=14pt] (0,2.6) -- (6,2.6);
+  \draw[ppAzul!25, line width=14pt] (3,2.6) -- (3,0);
+  \draw[thick, fill=gray!10] (0,2.6) circle (1.15);
+  \node[font=\footnotesize\bfseries] at (0,2.8) {Velocímetro};
+  \node[gray] at (0,2.0) {\tiny pitot-estático};
+  \draw[thick, fill=gray!10] (3,2.6) circle (1.15);
+  \node[font=\footnotesize\bfseries] at (3,2.8) {Horizonte\\ artificial};
+  \node[gray, font=\tiny] at (3,2.0) {giróscopo\\ (vacío)};
+  \draw[thick, fill=gray!10] (6,2.6) circle (1.15);
+  \node at (6,2.8) {\textbf{Altímetro}};
+  \node[gray] at (6,2.0) {\tiny estático};
+  \draw[thick, fill=gray!10] (0,0) circle (1.15);
+  \node[font=\footnotesize\bfseries] at (0,0.2) {Coordinador\\ de viraje};
+  \node[gray, font=\tiny] at (0,-0.6) {giróscopo\\ (eléctrico)};
+  \draw[thick, fill=gray!10] (3,0) circle (1.15);
+  \node[font=\footnotesize\bfseries] at (3,0.2) {Indicador\\ de rumbo};
+  \node[gray, font=\tiny] at (3,-0.6) {giróscopo\\ (vacío)};
+  \draw[thick, fill=gray!10] (6,0) circle (1.15);
+  \node at (6,0.2) {\textbf{Variómetro}};
+  \node[gray] at (6,-0.6) {\tiny estático};
+  \node[ppAzul, right] at (7.4,1.3) {\textbf{T básica}};
+\end{tikzpicture}
+\end{center}
+
+\paragraph*{Problemas del panel analógico.} Instrumentos de vacío con giróscopos que se desgastan;
+bombas de vacío que fallan sin aviso; mucho peso y cableado; poca información integrada; cada
+instrumento con su propio mantenimiento y calibración.
+
+% ------------------------------------------------------------
+\section*{2. LOS SISTEMAS ELECTRÓNICOS DE VUELO (EFIS)}
+
+En los años ochenta los aviones de transporte (Boeing 757/767, Airbus A310) reemplazaron los
+instrumentos de actitud y de rumbo por pantallas de tubos de rayos catódicos: el \textbf{EFIS}
+(\textit{Electronic Flight Instrument System}). Luego llegaron las pantallas de cristal líquido y la
+integración total. En la aviación general, el \textbf{Garmin G1000} (2004) llevó la
+\textbf{cabina de cristal} (\textit{glass cockpit}) a los aviones livianos.
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.18\linewidth}|p{0.70\linewidth}|}
+\hline
+\textbf{Pantalla} & \textbf{Función} \\ \hline
+\textbf{PFD} & \textit{Primary Flight Display}: reúne la T básica en una sola pantalla (actitud,
+velocidad, altitud, velocidad vertical, rumbo) más la navegación, el piloto automático y las
+alertas. \\ \hline
+\textbf{MFD} & \textit{Multi-Function Display}: mapa móvil, motor, tránsito, meteorología, terreno,
+cartas, listas de chequeo. \\ \hline
+\textbf{ND} & \textit{Navigation Display}: en aviones de transporte, la pantalla de navegación. \\
+\hline
+\textbf{EICAS / ECAM} & Pantallas de motor y de alertas de la tripulación (Boeing y Airbus). \\
+\hline
+\textbf{EIS} & \textit{Engine Indication System}: indicación de motor en aviación general. \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Ventajas.} Más información, mejor integrada y presentada de forma más intuitiva;
+menos peso; mayor confiabilidad (sin giróscopos mecánicos ni bombas de vacío); autodiagnóstico;
+actualización por software; menos cableado gracias a los buses de datos.
+
+\paragraph*{Desafíos.} Dependen totalmente del sistema eléctrico; exigen capacitación de pilotos y
+técnicos; las bases de datos y el software deben mantenerse actualizados; una falla puede afectar
+varias funciones a la vez. Un estudio de la NTSB de 2010 sobre aviones livianos con cabina de
+cristal concluyó que la tecnología por sí sola no mejoraba la seguridad si no venía acompañada de
+\textbf{capacitación específica}.
+
+% ------------------------------------------------------------
+\section*{3. ARQUITECTURAS}
+
+\begin{itemize}
+  \item \textbf{Instrumentos autónomos (\textit{standalone}):} una pantalla con sus sensores
+        internos o propios reemplaza a uno o dos instrumentos (G5, GI 275, Aspen).
+  \item \textbf{Sistema de pantallas con sensores remotos:} las pantallas reciben los datos de un
+        ADAHRS (computadora de datos de aire y referencia de actitud) y otros sensores, y se
+        comunican con la radio, el GPS y el piloto automático existentes (G3X Touch, G500/G600
+        TXi).
+  \item \textbf{Sistema totalmente integrado:} pantallas, sensores, radios, transpondedor, audio y
+        piloto automático forman un solo sistema conectado por buses de alta velocidad, con
+        unidades de procesamiento centrales (G1000, G3000, G5000, y en los aviones de transporte la
+        aviónica modular integrada, IMA).
+  \item \textbf{Pantalla con radios integradas:} la tendencia más reciente en aviación general es
+        que la pantalla incorpore también el navegador GPS, las radios de comunicaciones y
+        navegación y el panel de audio, eliminando la columna central de equipos (Garmin AXIS).
+\end{itemize}
+
+\paragraph*{Instrumentos de reserva.} Toda cabina de cristal mantiene \textbf{instrumentos de
+reserva} (\textit{standby}) independientes, con su propia batería, para volar si fallan las
+pantallas principales: antes eran un horizonte, un altímetro y un velocímetro mecánicos; hoy suele
+ser un instrumento electrónico (por ejemplo, un G5 o un GI 275).
+
+% ------------------------------------------------------------
+\section*{4. NORMAS Y CERTIFICACIÓN}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.26\linewidth}|p{0.62\linewidth}|}
+\hline
+\textbf{Norma o documento} & \textbf{Qué regula} \\ \hline
+TSO (\textit{Technical Standard Order}) & Estándar mínimo de desempeño de un equipo (por ejemplo,
+TSO-C113 para pantallas multipropósito). \\ \hline
+RTCA DO-160 & Ensayos ambientales: temperatura, vibración, humedad, interferencia, rayos. \\
+\hline
+RTCA DO-178C / DO-254 & Desarrollo del software y del hardware electrónico complejo. \\ \hline
+FAA AC 23.1311-1 & Instalación de pantallas electrónicas en aviones de categoría normal:
+ubicación, campo visual, colores, alertas. \\ \hline
+FAA AC 43.13-1B y 43.13-2 & Prácticas aceptables de mantenimiento, cableado e instalación de
+equipos. \\ \hline
+STC (certificado tipo suplementario) & Aprobación de una modificación de diseño. Un
+\textbf{AML-STC} cubre una lista de modelos de aeronave. \\ \hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Aeronaves certificadas, experimentales y LSA.} En una aeronave \textbf{certificada}
+solo se pueden instalar equipos con aprobación (TSO) y mediante datos aprobados (STC o aprobación
+de campo), y la instalación se documenta como alteración ante la autoridad. En las aeronaves
+\textbf{experimentales} (de construcción amateur) y \textbf{LSA} hay más libertad y se usan
+versiones experimentales de los equipos, más económicas. Por eso muchos fabricantes ofrecen dos
+versiones del mismo equipo. En la Argentina, la instalación en una aeronave certificada requiere
+que el STC extranjero esté \textbf{convalidado o aceptado por la ANAC} y que la realice un taller
+habilitado.
+
+% ------------------------------------------------------------
+\section*{5. ACTIVIDADES DE LA UNIDAD}
+\begin{enumerate}
+  \item Dibujar la T básica e indicar qué sistema alimenta a cada instrumento (pitot, estática,
+        vacío, eléctrico).
+  \item Comparar una foto de un panel analógico y una de un panel con G1000: ubicar en el PFD cada
+        uno de los seis instrumentos clásicos.
+  \item Investigar qué aeronaves de la escuela o del aeródromo más cercano tienen cabina de
+        cristal y con qué equipos.
+  \item Explicar la diferencia entre un instrumento autónomo, un sistema con sensores remotos y un
+        sistema integrado, con un ejemplo de cada uno.
+  \item Buscar en la lista de modelos (AML) de un STC de Garmin si incluye a un Cessna 150 o un
+        Piper PA-28.
+\end{enumerate}
